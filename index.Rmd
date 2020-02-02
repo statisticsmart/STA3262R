@@ -1,0 +1,17 @@
+--- 
+title: "STA 326 2.0 R Programming and Data Analysis"
+author: "Thiyanga S Talagala"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+---
+
+Learning outcomes functions:
+
+In this tutorial we learned what functions in R programming are, the basic syntax of functions in R programming, in-built functions and how to use them to make our work easier, the syntax of a user-defined function, and different types of user-defined functions. In the next session, we are going to learn how to read files in R programming.

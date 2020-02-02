@@ -1,0 +1,11 @@
+# Writing functions
+
+## When should we write functions?
+
+- do many repetitive task
+
+
+## Glogal variables vs local variables
+
+
+## Control structures

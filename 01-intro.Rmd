@@ -1,0 +1,433 @@
+# Introduction {#intro}
+
+The entities R operates on are technically known as **objects**. There are two types of objects:
+
+1. Data structures
+
+2. Functions
+
+# Data structures in base R
+
+There are five data types in R
+
+  1. Atomic vector
+    
+  2. Matrix
+    
+  3. Array
+    
+  4. List
+    
+  5. Data frame
+    
+## Atomic vectors
+
+- This is a 1-dimensional 
+
+- All elements of an atomic vector must be the  same type, Hence it is a **homogeneous** type of object. Vectirs can hold numeric data, charactor data or logical data. 
+
+### Creating vectors
+
+Vectors can be created by using the function concatenation `c`
+
+
+**Syntax**
+```r
+vector_name <- c(element1, element2, element3)
+
+```
+
+**Examples**
+
+```{r, eval=TRUE}
+first_vec <- c(10, 20, 50, 70)
+second_vec <- c("Jan", "Feb", "March", "April")
+third_vec <- c(TRUE, FALSE, TRUE, TRUE)
+fourth_vec <- c(10L, 20L, 50L, 70L)
+```
+
+### Types and tests with vectors
+
+1. `typepf()` returns types of their elements
+
+
+```{r}
+typeof(first_vec)
+typeof(fourth_vec)
+```
+
+
+2. To check if it is a 
+
+- vector: `is.vector()`
+
+```{r}
+is.vector(first_vec)
+```
+
+- charactor vector: `is.charactor()`
+
+```{r}
+is.character(first_vec)
+```
+
+- double: `is.double()`
+
+```{r}
+is.double(first_vec)
+```
+
+- integer: `is.integer()`
+
+```{r}
+is.integer(first_vec)
+```
+
+- logical: `is.logical()`
+
+```{r}
+is.logical(first_vec)
+```
+
+- atomic: `is.atomic()`
+
+```{r}
+is.atomic(first_vec)
+```
+
+
+3. `length()` returns number of elements in a vector
+
+```{r}
+length(first_vec)
+length(fourth_vec)
+```
+
+### Coercion
+
+Vectors must be homogeneous. When you attempt to combine different types they will be coerced to the most flexible type so that every element in the vector is of the same type.
+
+Order from least to most flexible
+
+`logical` --> `integer` --> `double` --> `charactor`
+
+```{r}
+a <- c(3.1, 2L, 3, 4, "GPA") 
+typeof(a) 
+```
+
+```{r}
+anew <- c(3.1, 2L, 3, 4)
+typeof(anew) 
+```
+
+
+### Explicit coercion
+
+Vectors can be explicitly coerced from one class to another using the functions `as.charactor`, `as.numeric`, `as.integer`, and `as.logical`.
+
+```{r}
+vec1 <- c(TRUE, FALSE, TRUE, TRUE)
+typeof(vec1)
+
+vec2 <- as.integer(vec1)
+typeof(vec2)
+vec2
+```
+
+**Question**
+
+Why the below output produce NAs?
+
+```{r}
+x <- c("a", "b", "c")
+as.numeric(x)
+```
+
+### Simplifying vector creation
+
+1. colon `:` produce regular spaced ascending or descending sequences.
+
+```{r}
+a1 <- 10:16
+a1
+b1 <- -0.5:8.5
+b1
+```
+
+2. sequence `seq()`. There are three arguments we need to provide, i) initial value, ii) final value, and iii) increment
+
+syntax
+
+```r
+seq(initial_value, final_value, increment)
+```
+
+example
+
+```{r}
+
+
+```
+
+3. repeats `rep()` 
+
+```{r}
+rep(9, 5)
+
+rep(1:4, 2)
+
+rep(1:4, each=2) # each element is repeated twice
+
+rep(1:4, times=2) # whole sequence is repeated twice
+
+rep(1:4, each=2, times=3)
+
+rep(1:4, 1:4)
+
+rep(1:4, c(4, 1, 4, 2))
+
+```
+
+### Logical operations
+
+### Subsetting 
+
+There are situations where we want to select only some of the elements of a vector. Following codes show various ways to select part of a vector object.
+
+```{r}
+data <- c(10, 20, 103, 124, 126)
+
+data[1] # shows the first element 
+
+data[-1] # shows all except the first item
+
+data[1:3] # shows first three elements
+
+data[c(1, 3, 4)]
+
+data[data > 3]
+
+data[data<20|data>120]
+
+```
+
+Example: How do you replace the 3rd element in the data vector by 203?
+
+```{r}
+data[3] <- 203
+data
+```
+
+### Vector arithmetic
+
+Vector operations are perfored element by element. 
+
+```{r}
+c(10, 100, 100) + 2 # two is added to every element in the vector
+```
+
+Vector operations between two vectors
+
+```{r}
+v1 <- c(1, 2, 3)
+v2 <- c(10, 100, 1000)
+v1 + v2
+```
+
+Add two vectors of unequal length
+
+```{r}
+longvec <- seq(10, 100, length=10)
+shortvec <- c(1, 2, 3, 4, 5)
+
+shortvec+longvec
+
+```
+
+### Missing values
+
+Use `NA` to place a missing value in a vector.
+
+```{r}
+z <- c(10, 101, 2, 3, NA)
+is.na(z)
+
+```
+
+## Matrix
+
+Matrix is a 2-dimentional and a homogeneous data structure
+
+**Syntax to create a matrix**
+
+```r
+matrix_name <- matrix(vector_of_elements, 
+                      nrow=number_of_rows,
+                      ncol=number_of_columns,
+                      byrow=logical_value, # If byrow=TRUE, then the matrix is filled in by row.
+                      dimnames=list(rnames, cnames)) # To assign row names and columns
+
+```
+
+**Example**
+
+```{r}
+values <- c(10, 20, 30, 40)
+matrix1 <- matrix(values, nrow=2) # Matrix filled by columns (default option)
+matrix1
+matrix2 <- matrix(values, nrow=2, byrow=TRUE) # Matrix filled by rows
+matrix2
+```
+
+**Naming matrix rows and columns**
+
+```{r}
+rnames <- c("R1", "R2")
+cnames <- c("C1", "C2")
+matrix_with_names <- matrix(values, nrow=2, dimnames=list(rnames, cnames))
+matrix_with_names
+
+```
+
+### Matrix subscript
+
+`matraix_name[i, ]` gives the ith row of a matrix
+
+```{r}
+matrix1[1, ]
+```
+
+`matraix_name[, j]` gives the jth column of a matrix
+
+```{r}
+matrix1[, 2]
+```
+
+`matraix_name[i, j]` gives the ith row and jth column element
+
+```{r}
+matrix1[1, 2]
+```
+
+```{r}
+matrix1[1, c(1, 2)] 
+```
+
+### `cbind` and `rbind`
+
+Matrices can be created by column-binding and row-binding with `cbind()` and `rbind()`
+
+```{r}
+
+x <- 1:3
+y <- c(10, 100, 1000)
+
+cbind(x, y) # binds matrices horizontally
+
+rbind(x, y) #binds matrices vertically
+
+```
+
+### Matrix operations
+
+
+
+## Array
+
+- 3 dimentional data structure
+
+- 
+
+
+## List
+
+
+
+## Data frame
+
+- A data frame is more general than a matrix in that different columns can contain different modes of data.
+
+- It’s similar to the datasets you’d typically see in SPSS and MINITAB.
+
+- Data frames are the most common data structure you’ll deal with in R.
+
+### Creating a dataframe
+
+**Syntax**
+
+```r
+name_of_the_dataframe <- data.frame(
+                          var1_name=vector of values of the first variable,
+                          var2_names=vector of values of the second variable)
+
+```
+
+**Example**
+
+```{r}
+corona <- data.frame(ID=c("C001", "C002", "C003", "C004"),
+                     Location=c("Beijing", "Wuhan", "Shanghai", "Beijing"),
+                     Test_Results=c(FALSE, TRUE, FALSE, FALSE))
+corona
+```
+
+
+To check if it is a datafrme
+
+```{r}
+is.data.frame(corona)
+
+```
+
+To convert a matrix to a dataframe
+
+```{r}
+mat <- matrix(10:81, ncol=4)
+mat
+mat_df <- as.data.frame(mat)
+mat_df
+```
+
+### Subsetting data frames 
+
+**Select rows**
+
+```{r}
+head(mat_df) # default it shows 5 rows
+
+head(mat_df, 3) # To extract only the first three rows 
+```
+
+```{r}
+tail(mat_df)
+```
+
+To select some specific rows
+
+```{r}
+index <- c(1, 3, 7, 8)
+mat_df[index, ]
+
+```
+
+**Select columns**
+
+1. Select column(s) by variable names
+
+```{r}
+mat_df$V1 # Method 1
+
+mat_df[, "V1"] # Method 2
+```
+
+2. Select column(s) by index
+
+```{r}
+mat_df[, 2]
+```
+
+### Built in dataframes
+
+**Note:**  All objects in R have a class.
+

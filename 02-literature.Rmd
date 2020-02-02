@@ -1,0 +1,59 @@
+# Functions in R programming
+
+A function is a block of organized and reusable code that is used to perform a specific task in a program. There are two types of functions in R:
+
+  1. In-built functions
+    
+  2. User-defined functions
+    
+## In-built functions
+
+These functions in R programming are provided by R environment for direct execution, to make our work easier Some examples for the frequently used in-built functions are as follows.
+
+```{r}
+mean(c(10, 20, 21, 78, 105))
+
+```
+
+
+## User-defined functions
+
+These functions in R programming language are dclared and defined by a user according to the requirements, to perform a specific task.
+
+All R functions have three main components: (Check this with Hadley's book)
+
+1. **function name**: name of the function that is stored as an R object
+
+2. **arguments:** are used to rovide specific inputs to a function while a function is invoked. A function can have zero, single, multiple or default arguments.
+
+3. **function body:** contains the block of code that performs the specific task assigned to a function. **return value** 
+
+## Some useful built-in functions in R
+
+### Maths functions
+
+|  Operator | Description  |
+|---|---|
+|  abs(x) | absolute value of x   |
+| log(x, base=y)  |  logarithm of x with base y; if base is not specified, returns the natural logarithm |
+|exp(x)| exponential of x|
+|sqrt(x)|square root of x|
+|factorial(x)| factorial of x|
+
+### Basic statistic functions
+
+|  Operator | Description  |
+|---|---|
+|  mean(x) | mean of x   |
+| median(x)  |  median of x |
+|mode(x)| mode of x|
+|var(x)|variance of x|
+|scale(x)| z-score of x|
+|quantile(x)| quantiles of x|
+|summary(x)|summary of x: mean, minimum, maximum, etc.|
+
+### Probability distribution functions
+
+
+
+

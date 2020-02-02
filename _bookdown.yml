@@ -1,0 +1,5 @@
+book_filename: "STA 326 2.0 R programming and Data Analysis"
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true

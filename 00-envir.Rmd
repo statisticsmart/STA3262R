@@ -1,0 +1,8 @@
+# R environment {#elements}
+
+
+## Getting help
+
+
+## Data permanency and removing objects
+
