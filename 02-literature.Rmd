@@ -10,7 +10,7 @@ A function is a block of organized and reusable code that is used to perform a s
 
 These functions in R programming are provided by R environment for direct execution, to make our work easier Some examples for the frequently used in-built functions are as follows.
 
-```{r}
+```{r comment=NA}
 mean(c(10, 20, 21, 78, 105))
 
 ```

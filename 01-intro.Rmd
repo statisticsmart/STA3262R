@@ -51,7 +51,7 @@ fourth_vec <- c(10L, 20L, 50L, 70L)
 1. `typepf()` returns types of their elements
 
 
-```{r}
+```{r, comment=NA}
 typeof(first_vec)
 typeof(fourth_vec)
 ```
@@ -61,44 +61,44 @@ typeof(fourth_vec)
 
 - vector: `is.vector()`
 
-```{r}
+```{r, comment=NA}
 is.vector(first_vec)
 ```
 
 - charactor vector: `is.charactor()`
 
-```{r}
+```{r, comment=NA}
 is.character(first_vec)
 ```
 
 - double: `is.double()`
 
-```{r}
+```{r, comment=NA}
 is.double(first_vec)
 ```
 
 - integer: `is.integer()`
 
-```{r}
+```{r, comment=NA}
 is.integer(first_vec)
 ```
 
 - logical: `is.logical()`
 
-```{r}
+```{r, comment=NA}
 is.logical(first_vec)
 ```
 
 - atomic: `is.atomic()`
 
-```{r}
+```{r, comment=NA}
 is.atomic(first_vec)
 ```
 
 
 3. `length()` returns number of elements in a vector
 
-```{r}
+```{r, comment=NA}
 length(first_vec)
 length(fourth_vec)
 ```
@@ -111,12 +111,12 @@ Order from least to most flexible
 
 `logical` --> `integer` --> `double` --> `charactor`
 
-```{r}
+```{r, comment=NA}
 a <- c(3.1, 2L, 3, 4, "GPA") 
 typeof(a) 
 ```
 
-```{r}
+```{r, comment=NA}
 anew <- c(3.1, 2L, 3, 4)
 typeof(anew) 
 ```
@@ -126,7 +126,7 @@ typeof(anew)
 
 Vectors can be explicitly coerced from one class to another using the functions `as.charactor`, `as.numeric`, `as.integer`, and `as.logical`.
 
-```{r}
+```{r, comment=NA}
 vec1 <- c(TRUE, FALSE, TRUE, TRUE)
 typeof(vec1)
 
@@ -139,7 +139,7 @@ vec2
 
 Why the below output produce NAs?
 
-```{r}
+```{r, comment=NA}
 x <- c("a", "b", "c")
 as.numeric(x)
 ```
@@ -148,7 +148,7 @@ as.numeric(x)
 
 1. colon `:` produce regular spaced ascending or descending sequences.
 
-```{r}
+```{r, comment=NA}
 a1 <- 10:16
 a1
 b1 <- -0.5:8.5
@@ -172,7 +172,7 @@ example
 
 3. repeats `rep()` 
 
-```{r}
+```{r, comment=NA}
 rep(9, 5)
 
 rep(1:4, 2)
@@ -195,7 +195,7 @@ rep(1:4, c(4, 1, 4, 2))
 
 There are situations where we want to select only some of the elements of a vector. Following codes show various ways to select part of a vector object.
 
-```{r}
+```{r, comment=NA}
 data <- c(10, 20, 103, 124, 126)
 
 data[1] # shows the first element 
@@ -214,7 +214,7 @@ data[data<20|data>120]
 
 Example: How do you replace the 3rd element in the data vector by 203?
 
-```{r}
+```{r, comment=NA}
 data[3] <- 203
 data
 ```
@@ -223,13 +223,13 @@ data
 
 Vector operations are perfored element by element. 
 
-```{r}
+```{r, comment=NA}
 c(10, 100, 100) + 2 # two is added to every element in the vector
 ```
 
 Vector operations between two vectors
 
-```{r}
+```{r, comment=NA}
 v1 <- c(1, 2, 3)
 v2 <- c(10, 100, 1000)
 v1 + v2
@@ -237,7 +237,7 @@ v1 + v2
 
 Add two vectors of unequal length
 
-```{r}
+```{r, comment=NA}
 longvec <- seq(10, 100, length=10)
 shortvec <- c(1, 2, 3, 4, 5)
 
@@ -249,11 +249,15 @@ shortvec+longvec
 
 Use `NA` to place a missing value in a vector.
 
-```{r}
+```{r, comment=NA}
 z <- c(10, 101, 2, 3, NA)
 is.na(z)
 
 ```
+
+### Factor 
+
+A factor is a vector that can contain only predefined values, and is used to store categorical data.
 
 ## Matrix
 
@@ -272,7 +276,7 @@ matrix_name <- matrix(vector_of_elements,
 
 **Example**
 
-```{r}
+```{r, comment=NA}
 values <- c(10, 20, 30, 40)
 matrix1 <- matrix(values, nrow=2) # Matrix filled by columns (default option)
 matrix1
@@ -282,7 +286,7 @@ matrix2
 
 **Naming matrix rows and columns**
 
-```{r}
+```{r, comment=NA}
 rnames <- c("R1", "R2")
 cnames <- c("C1", "C2")
 matrix_with_names <- matrix(values, nrow=2, dimnames=list(rnames, cnames))
@@ -294,23 +298,23 @@ matrix_with_names
 
 `matraix_name[i, ]` gives the ith row of a matrix
 
-```{r}
+```{r, comment=NA}
 matrix1[1, ]
 ```
 
 `matraix_name[, j]` gives the jth column of a matrix
 
-```{r}
+```{r, comment=NA}
 matrix1[, 2]
 ```
 
 `matraix_name[i, j]` gives the ith row and jth column element
 
-```{r}
+```{r, comment=NA}
 matrix1[1, 2]
 ```
 
-```{r}
+```{r, comment=NA}
 matrix1[1, c(1, 2)] 
 ```
 
@@ -318,7 +322,7 @@ matrix1[1, c(1, 2)]
 
 Matrices can be created by column-binding and row-binding with `cbind()` and `rbind()`
 
-```{r}
+```{r, comment=NA}
 
 x <- 1:3
 y <- c(10, 100, 1000)
@@ -365,7 +369,7 @@ name_of_the_dataframe <- data.frame(
 
 **Example**
 
-```{r}
+```{r, comment=NA}
 corona <- data.frame(ID=c("C001", "C002", "C003", "C004"),
                      Location=c("Beijing", "Wuhan", "Shanghai", "Beijing"),
                      Test_Results=c(FALSE, TRUE, FALSE, FALSE))
@@ -375,14 +379,14 @@ corona
 
 To check if it is a datafrme
 
-```{r}
+```{r, comment=NA}
 is.data.frame(corona)
 
 ```
 
 To convert a matrix to a dataframe
 
-```{r}
+```{r, comment=NA}
 mat <- matrix(10:81, ncol=4)
 mat
 mat_df <- as.data.frame(mat)
@@ -393,19 +397,19 @@ mat_df
 
 **Select rows**
 
-```{r}
+```{r, comment=NA}
 head(mat_df) # default it shows 5 rows
 
 head(mat_df, 3) # To extract only the first three rows 
 ```
 
-```{r}
+```{r, comment=NA}
 tail(mat_df)
 ```
 
 To select some specific rows
 
-```{r}
+```{r, comment=NA}
 index <- c(1, 3, 7, 8)
 mat_df[index, ]
 
@@ -415,7 +419,7 @@ mat_df[index, ]
 
 1. Select column(s) by variable names
 
-```{r}
+```{r, comment=NA}
 mat_df$V1 # Method 1
 
 mat_df[, "V1"] # Method 2
@@ -423,7 +427,7 @@ mat_df[, "V1"] # Method 2
 
 2. Select column(s) by index
 
-```{r}
+```{r, comment=NA}
 mat_df[, 2]
 ```
 
