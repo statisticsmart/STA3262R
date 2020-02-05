@@ -120,7 +120,7 @@
 
 \title{STA 326 2.0 R Programming and Data Analysis}
 \author{Thiyanga S Talagala}
-\date{2020-02-03}
+\date{2020-02-05}
 
 \begin{document}
 \maketitle
@@ -136,14 +136,53 @@ In this tutorial we learned what functions in R programming are, the basic synta
 \hypertarget{elements}{%
 \chapter{R environment}\label{elements}}
 
-\hypertarget{getting-help}{%
-\section{Getting help}\label{getting-help}}
+\hypertarget{rstudio}{%
+\section{RStudio}\label{rstudio}}
 
-\hypertarget{data-permanency-and-removing-objects}{%
-\section{Data permanency and removing objects}\label{data-permanency-and-removing-objects}}
+RStudio is an integrated development environment (IDE) for R that provides an alternative interface to R that has several advantages over other default interfaces.
 
-\hypertarget{intro}{%
-\chapter{Introduction}\label{intro}}
+\hypertarget{working-with-r-scripts-files}{%
+\section{Working with R scripts files}\label{working-with-r-scripts-files}}
+
+Rather than typing R commands into the Console. This allows for \textbf{reproducibility}, share scripts with someone else.
+
+To create a new R script
+
+File --\textgreater{} New File --\textgreater{} R Script
+
+Commenting on R scripts
+
+\hypertarget{r-packages}{%
+\section{R packages}\label{r-packages}}
+
+\hypertarget{installation}{%
+\subsection{Installation}\label{installation}}
+
+There is a large community of R users who contribute various packages that do useful things. Before you start using an R package, you must first install it into your environment. There are two ways to install a package
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+\item
+\end{enumerate}
+
+\hypertarget{load-a-package}{%
+\subsection{Load a package}\label{load-a-package}}
+
+one time, then load package
+
+\hypertarget{important-things-to-know-about-r}{%
+\section{Important things to know about R}\label{important-things-to-know-about-r}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  R is case-sensitive
+\end{enumerate}
+
+\hypertarget{objects}{%
+\section{Objects}\label{objects}}
 
 The entities R operates on are technically known as \textbf{objects}. There are two types of objects:
 
@@ -155,8 +194,20 @@ The entities R operates on are technically known as \textbf{objects}. There are 
   Functions
 \end{enumerate}
 
-\hypertarget{data-structures-in-base-r}{%
-\chapter{Data structures in base R}\label{data-structures-in-base-r}}
+\hypertarget{getting-help}{%
+\section{Getting help}\label{getting-help}}
+
+\hypertarget{variable-assignment}{%
+\section{Variable assignment}\label{variable-assignment}}
+
+\hypertarget{section}{%
+\section{}\label{section}}
+
+\hypertarget{data-permanency-and-removing-objects}{%
+\section{Data permanency and removing objects}\label{data-permanency-and-removing-objects}}
+
+\hypertarget{intro}{%
+\chapter{Data structures in base R}\label{intro}}
 
 There are five data types in R
 
@@ -261,6 +312,28 @@ Vectors can be created by using the function concatenation \texttt{c}
 \begin{verbatim}
 [1] TRUE
 \end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Data types in R
+\end{enumerate}
+
+R works with numerous data types. Some of the most basic types to get started are:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{numeric}: decimal values like 8.5
+\item
+  \textbf{integers}: natural numbers like 8
+\item
+  \textbf{logical}: Boolean values (TRUE or FALSE)
+\item
+  \textbf{character}: strigs(text) like ``statistics''
+\end{enumerate}
 
 \begin{itemize}
 \tightlist
@@ -898,12 +971,20 @@ y   10  100 1000
 
 \begin{itemize}
 \item
+  A dataframe is a rectangular arrangement of data with rows corresponding to observational units and columns corresponding to variables.
+\item
   A data frame is more general than a matrix in that different columns can contain different modes of data.
 \item
   It's similar to the datasets you'd typically see in SPSS and MINITAB.
 \item
   Data frames are the most common data structure you'll deal with in R.
 \end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{tidy-1.png}
+\caption{Figure 1: Components of a dataframe.}
+\end{figure}
 
 \hypertarget{creating-a-dataframe}{%
 \subsection{Creating a dataframe}\label{creating-a-dataframe}}
@@ -1175,6 +1256,46 @@ All R functions have three main components: (Check this with Hadley's book)
 
 \hypertarget{some-useful-built-in-functions-in-r}{%
 \section{Some useful built-in functions in R}\label{some-useful-built-in-functions-in-r}}
+
+\hypertarget{r-can-be-used-as-a-simple-calculator.}{%
+\section{R can be used as a simple calculator.}\label{r-can-be-used-as-a-simple-calculator.}}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\begin{minipage}[b]{0.47\columnwidth}\raggedright
+Operator\strut
+\end{minipage} & \begin{minipage}[b]{0.47\columnwidth}\raggedright
+Description\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
++\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+addition\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+-\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+substraction\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+*\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+multiplication\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+\^{}\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+exponentiation (5\^{}2 is 25)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.47\columnwidth}\raggedright
+\%\%\strut
+\end{minipage} & \begin{minipage}[t]{0.47\columnwidth}\raggedright
+modulo-remainder of the division of the number to the left by the number on its right. (5\%\%3 is 2)\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
 
 \hypertarget{maths-functions}{%
 \subsection{Maths functions}\label{maths-functions}}

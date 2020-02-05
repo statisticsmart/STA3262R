@@ -1,8 +1,57 @@
 # R environment {#elements}
 
 
+## RStudio
+
+RStudio is an integrated development environment (IDE) for R that provides an alternative interface to R that has several advantages over other default interfaces. 
+
+## Working with R scripts files
+
+Rather than typing R commands into the Console. This allows for **reproducibility**, share scripts with someone else.
+
+To create a new R script
+
+File --> New File --> R Script
+
+Commenting on R scripts
+
+## R packages
+
+### Installation
+
+There is a large community of R users who contribute various packages that do useful things. Before you start using an R package, you must first install it into your environment. There are two ways to install a package
+
+1. 
+
+
+2.
+
+### Load a package
+
+one time, then load package
+
+## Important things to know about R
+
+1. R is case-sensitive
+
+
+## Objects
+
+The entities R operates on are technically known as **objects**. There are two types of objects:
+
+1. Data structures
+
+2. Functions
+
 ## Getting help
 
 
+
+## Variable assignment
+
+
+## 
+
 ## Data permanency and removing objects
+
 

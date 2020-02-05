@@ -30,6 +30,17 @@ All R functions have three main components: (Check this with Hadley's book)
 
 ## Some useful built-in functions in R
 
+
+## R can be used as a simple calculator.
+
+|  Operator | Description  |
+|---|---|
+| + | addition   |
+| -  | substraction|
+|*| multiplication|
+|^|exponentiation (5^2 is 25)|
+|%%| modulo-remainder of the division of the number to the left by the number on its right. (5%%3 is 2)|
+
 ### Maths functions
 
 |  Operator | Description  |

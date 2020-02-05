@@ -1,12 +1,4 @@
-# Introduction {#intro}
-
-The entities R operates on are technically known as **objects**. There are two types of objects:
-
-1. Data structures
-
-2. Functions
-
-# Data structures in base R
+# Data structures in base R {#intro}
 
 There are five data types in R
 
@@ -56,7 +48,6 @@ typeof(first_vec)
 typeof(fourth_vec)
 ```
 
-
 2. To check if it is a 
 
 - vector: `is.vector()`
@@ -64,6 +55,19 @@ typeof(fourth_vec)
 ```{r, comment=NA}
 is.vector(first_vec)
 ```
+
+3. Data types in R 
+
+R works with numerous data types. Some of the most basic types to get started are:
+
+1. **numeric**: decimal values like 8.5
+
+2. **integers**: natural numbers like 8
+
+3. **logical**: Boolean values (TRUE or FALSE)
+
+4. **character**: strigs(text) like "statistics"
+
 
 - charactor vector: `is.charactor()`
 
@@ -350,11 +354,15 @@ rbind(x, y) #binds matrices vertically
 
 ## Data frame
 
+-  A dataframe is a rectangular arrangement of data with rows corresponding to observational units and columns corresponding to variables.
+
 - A data frame is more general than a matrix in that different columns can contain different modes of data.
 
 - It’s similar to the datasets you’d typically see in SPSS and MINITAB.
 
 - Data frames are the most common data structure you’ll deal with in R.
+
+![Figure 1: Components of a dataframe.](tidy-1.png)
 
 ### Creating a dataframe
 
