@@ -9,3 +9,7 @@
 
 
 ## Control structures
+
+- for loops
+
+## lapply, apply..

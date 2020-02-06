@@ -5,3 +5,20 @@ Some _significant_ applications are demonstrated in this chapter.
 
 
 
+## Tidy data
+
+
+
+Two key principles:
+
+1. Put each dataset in a dataframe
+
+2. Put each variable in a column
+
+![Figure 1: Components of a dataframe.](tidy-1.png)
+
+Vedio: https://www.youtube.com/watch?v=K-ss_ag2k9E
+
+### Convert from messy data to tidy data
+
+"Tidy dataset are all alike; every messy dataset is messy in its own way." _ Hadley Wickham

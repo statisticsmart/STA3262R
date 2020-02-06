@@ -120,7 +120,7 @@
 
 \title{STA 326 2.0 R Programming and Data Analysis}
 \author{Thiyanga S Talagala}
-\date{2020-02-05}
+\date{2020-02-06}
 
 \begin{document}
 \maketitle
@@ -134,7 +134,10 @@ Learning outcomes functions:
 In this tutorial we learned what functions in R programming are, the basic syntax of functions in R programming, in-built functions and how to use them to make our work easier, the syntax of a user-defined function, and different types of user-defined functions. In the next session, we are going to learn how to read files in R programming.
 
 \hypertarget{elements}{%
-\chapter{R environment}\label{elements}}
+\chapter{Introduction}\label{elements}}
+
+\hypertarget{r-programming-language}{%
+\section{R programming language}\label{r-programming-language}}
 
 \hypertarget{rstudio}{%
 \section{RStudio}\label{rstudio}}
@@ -176,9 +179,22 @@ one time, then load package
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
-\tightlist
 \item
   R is case-sensitive
+\item
+  R works with numerous data types. Some of the most basic types to get started are:
+
+  \begin{enumerate}
+  \def\labelenumii{\roman{enumii}.}
+  \item
+    \textbf{numeric}: decimal values like 8.5
+  \item
+    \textbf{integers}: natural numbers like 8
+  \item
+    \textbf{logical}: Boolean values (TRUE or FALSE)
+  \item
+    \textbf{character}: strigs(text) like ``statistics''
+  \end{enumerate}
 \end{enumerate}
 
 \hypertarget{objects}{%
@@ -312,28 +328,6 @@ Vectors can be created by using the function concatenation \texttt{c}
 \begin{verbatim}
 [1] TRUE
 \end{verbatim}
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
-\tightlist
-\item
-  Data types in R
-\end{enumerate}
-
-R works with numerous data types. Some of the most basic types to get started are:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  \textbf{numeric}: decimal values like 8.5
-\item
-  \textbf{integers}: natural numbers like 8
-\item
-  \textbf{logical}: Boolean values (TRUE or FALSE)
-\item
-  \textbf{character}: strigs(text) like ``statistics''
-\end{enumerate}
 
 \begin{itemize}
 \tightlist
@@ -1209,8 +1203,8 @@ To select some specific rows
 
 \textbf{Note:} All objects in R have a class.
 
-\hypertarget{functions-in-r-programming}{%
-\chapter{Functions in R programming}\label{functions-in-r-programming}}
+\hypertarget{function}{%
+\chapter{Functions in R programming}\label{function}}
 
 A function is a block of organized and reusable code that is used to perform a specific task in a program. There are two types of functions in R:
 
@@ -1242,6 +1236,9 @@ These functions in R programming are provided by R environment for direct execut
 
 These functions in R programming language are dclared and defined by a user according to the requirements, to perform a specific task.
 
+\hypertarget{main-components-of-a-function}{%
+\section{Main components of a function}\label{main-components-of-a-function}}
+
 All R functions have three main components: (Check this with Hadley's book)
 
 \begin{enumerate}
@@ -1253,6 +1250,9 @@ All R functions have three main components: (Check this with Hadley's book)
 \item
   \textbf{function body:} contains the block of code that performs the specific task assigned to a function. \textbf{return value}
 \end{enumerate}
+
+\hypertarget{passing-arguments-to-a-function}{%
+\section{Passing arguments to a function}\label{passing-arguments-to-a-function}}
 
 \hypertarget{some-useful-built-in-functions-in-r}{%
 \section{Some useful built-in functions in R}\label{some-useful-built-in-functions-in-r}}
@@ -1297,8 +1297,8 @@ modulo-remainder of the division of the number to the left by the number on its 
 \bottomrule
 \end{longtable}
 
-\hypertarget{maths-functions}{%
-\subsection{Maths functions}\label{maths-functions}}
+\hypertarget{some-more-maths-functions}{%
+\subsection{Some more maths functions}\label{some-more-maths-functions}}
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
@@ -1358,6 +1358,77 @@ summary(x) & summary of x: mean, minimum, maximum, etc.\tabularnewline
 \hypertarget{probability-distribution-functions}{%
 \subsection{Probability distribution functions}\label{probability-distribution-functions}}
 
+\begin{itemize}
+\item
+  \textbf{d} prefix for the \textbf{distribution} function
+\item
+  \textbf{p} prefix for the \textbf{probability}
+\item
+  \textbf{q} prefix for the \textbf{quantile}
+\item
+  \textbf{r} prefix for the \textbf{random} number generator
+\end{itemize}
+
+\hypertarget{illustration-with-standard-normal-distribution}{%
+\subsubsection{Illustration with Standard normal distribution}\label{illustration-with-standard-normal-distribution}}
+
+The general formula for the probability density function of the normal distribution with mean \(\mu\) and variance \(\sigma\) is given by
+
+\[
+f_X(x) = \frac{1}{\sigma\sqrt{(2\pi)}} e^{-(x-\mu)^2/2\sigma^2}
+\]
+
+\hypertarget{reproducibility-of-scientific-results}{%
+\subsection{Reproducibility of scientific results}\label{reproducibility-of-scientific-results}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rnorm}\NormalTok{(}\DecValTok{10}\NormalTok{) }\CommentTok{# first attempt}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  0.60064745 -0.40656969 -1.27499855  1.08826739 -0.03398461 -0.81505467
+##  [7] -1.10542367  1.72754929  0.75281886  0.50873719
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rnorm}\NormalTok{(}\DecValTok{10}\NormalTok{) }\CommentTok{# second attempt}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] -0.45083911 -0.49272368  1.06436998  0.02131287  1.07597638  0.99712576
+##  [7] -0.57225171  0.08784569  0.04534238 -1.28541711
+\end{verbatim}
+
+As you can see above you will get different results
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\KeywordTok{rnorm}\NormalTok{(}\DecValTok{10}\NormalTok{) }\CommentTok{# First attempt with set.seed}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] -0.6264538  0.1836433 -0.8356286  1.5952808  0.3295078 -0.8204684
+##  [7]  0.4874291  0.7383247  0.5757814 -0.3053884
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\KeywordTok{rnorm}\NormalTok{(}\DecValTok{10}\NormalTok{) }\CommentTok{# Second attempt with set.seed}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] -0.6264538  0.1836433 -0.8356286  1.5952808  0.3295078 -0.8204684
+##  [7]  0.4874291  0.7383247  0.5757814 -0.3053884
+\end{verbatim}
+
 \hypertarget{writing-functions}{%
 \chapter{Writing functions}\label{writing-functions}}
 
@@ -1376,16 +1447,57 @@ summary(x) & summary of x: mean, minimum, maximum, etc.\tabularnewline
 \hypertarget{control-structures}{%
 \section{Control structures}\label{control-structures}}
 
+\begin{itemize}
+\tightlist
+\item
+  for loops
+\end{itemize}
+
+\hypertarget{lapply-apply..}{%
+\section{lapply, apply..}\label{lapply-apply..}}
+
 \hypertarget{data-analysis-with-tidyverse}{%
 \chapter{Data analysis with tidyverse}\label{data-analysis-with-tidyverse}}
 
 Some \emph{significant} applications are demonstrated in this chapter.
+
+\hypertarget{tidy-data}{%
+\section{Tidy data}\label{tidy-data}}
+
+Two key principles:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Put each dataset in a dataframe
+\item
+  Put each variable in a column
+\end{enumerate}
+
+\begin{figure}
+\centering
+\includegraphics{tidy-1.png}
+\caption{Figure 1: Components of a dataframe.}
+\end{figure}
+
+Vedio: \url{https://www.youtube.com/watch?v=K-ss_ag2k9E}
+
+\hypertarget{convert-from-messy-data-to-tidy-data}{%
+\subsection{Convert from messy data to tidy data}\label{convert-from-messy-data-to-tidy-data}}
+
+``Tidy dataset are all alike; every messy dataset is messy in its own way.'' \_ Hadley Wickham
 
 \hypertarget{data-wrangliing}{%
 \chapter{Data wrangliing}\label{data-wrangliing}}
 
 \hypertarget{data-visualisation}{%
 \chapter{Data visualisation}\label{data-visualisation}}
+
+\hypertarget{modelling}{%
+\chapter{Modelling}\label{modelling}}
+
+\hypertarget{simulation-based-inference}{%
+\section{Simulation-based Inference}\label{simulation-based-inference}}
 
   \bibliography{book.bib,packages.bib}
 

@@ -1,5 +1,6 @@
-# R environment {#elements}
+# Introduction {#elements}
 
+## R programming language
 
 ## RStudio
 
@@ -34,6 +35,15 @@ one time, then load package
 
 1. R is case-sensitive
 
+3. R works with numerous data types. Some of the most basic types to get started are:
+
+    i. **numeric**: decimal values like 8.5
+    
+    ii. **integers**: natural numbers like 8
+
+    iii. **logical**: Boolean values (TRUE or FALSE)
+
+    iv. **character**: strigs(text) like "statistics"
 
 ## Objects
 

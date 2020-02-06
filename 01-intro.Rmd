@@ -56,18 +56,6 @@ typeof(fourth_vec)
 is.vector(first_vec)
 ```
 
-3. Data types in R 
-
-R works with numerous data types. Some of the most basic types to get started are:
-
-1. **numeric**: decimal values like 8.5
-
-2. **integers**: natural numbers like 8
-
-3. **logical**: Boolean values (TRUE or FALSE)
-
-4. **character**: strigs(text) like "statistics"
-
 
 - charactor vector: `is.charactor()`
 

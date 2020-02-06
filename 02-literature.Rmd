@@ -1,4 +1,4 @@
-# Functions in R programming
+# Functions in R programming{#function}
 
 A function is a block of organized and reusable code that is used to perform a specific task in a program. There are two types of functions in R:
 
@@ -20,6 +20,8 @@ mean(c(10, 20, 21, 78, 105))
 
 These functions in R programming language are dclared and defined by a user according to the requirements, to perform a specific task.
 
+## Main components of a function
+
 All R functions have three main components: (Check this with Hadley's book)
 
 1. **function name**: name of the function that is stored as an R object
@@ -27,6 +29,8 @@ All R functions have three main components: (Check this with Hadley's book)
 2. **arguments:** are used to rovide specific inputs to a function while a function is invoked. A function can have zero, single, multiple or default arguments.
 
 3. **function body:** contains the block of code that performs the specific task assigned to a function. **return value** 
+
+## Passing arguments to a function
 
 ## Some useful built-in functions in R
 
@@ -41,7 +45,7 @@ All R functions have three main components: (Check this with Hadley's book)
 |^|exponentiation (5^2 is 25)|
 |%%| modulo-remainder of the division of the number to the left by the number on its right. (5%%3 is 2)|
 
-### Maths functions
+### Some more maths functions
 
 |  Operator | Description  |
 |---|---|
@@ -65,6 +69,48 @@ All R functions have three main components: (Check this with Hadley's book)
 
 ### Probability distribution functions
 
+- **d** prefix for the **distribution** function
+
+- **p** prefix for the **probability**
+
+- **q** prefix for the **quantile**
+
+- **r** prefix for the **random** number generator
+
+#### Illustration with Standard normal distribution
+
+The general formula for the probability density function of the normal distribution with mean $\mu$ and variance $\sigma$ is given by
+
+
+\[
+f_X(x) = \frac{1}{\sigma\sqrt{(2\pi)}} e^{-(x-\mu)^2/2\sigma^2}
+\]
+
+
+### Reproducibility of scientific results
+
+```{r}
+rnorm(10) # first attempt
+
+```
+
+
+```{r}
+rnorm(10) # second attempt
+
+```
+
+As you can see above you will get different results 
+
+```{r}
+set.seed(1)
+rnorm(10) # First attempt with set.seed
+```
+
+```{r}
+set.seed(1)
+rnorm(10) # Second attempt with set.seed
+```
 
 
 
