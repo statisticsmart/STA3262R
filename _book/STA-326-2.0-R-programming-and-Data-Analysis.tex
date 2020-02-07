@@ -120,7 +120,7 @@
 
 \title{STA 326 2.0 R Programming and Data Analysis}
 \author{Thiyanga S Talagala}
-\date{2020-02-06}
+\date{2020-02-07}
 
 \begin{document}
 \maketitle
@@ -1204,7 +1204,7 @@ To select some specific rows
 \textbf{Note:} All objects in R have a class.
 
 \hypertarget{function}{%
-\chapter{Functions in R programming}\label{function}}
+\chapter{Functions in R}\label{function}}
 
 A function is a block of organized and reusable code that is used to perform a specific task in a program. There are two types of functions in R:
 
@@ -1258,7 +1258,7 @@ All R functions have three main components: (Check this with Hadley's book)
 \section{Some useful built-in functions in R}\label{some-useful-built-in-functions-in-r}}
 
 \hypertarget{r-can-be-used-as-a-simple-calculator.}{%
-\section{R can be used as a simple calculator.}\label{r-can-be-used-as-a-simple-calculator.}}
+\subsection{R can be used as a simple calculator.}\label{r-can-be-used-as-a-simple-calculator.}}
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
@@ -1362,7 +1362,7 @@ summary(x) & summary of x: mean, minimum, maximum, etc.\tabularnewline
 \item
   \textbf{d} prefix for the \textbf{distribution} function
 \item
-  \textbf{p} prefix for the \textbf{probability}
+  \textbf{p} prefix for the \textbf{cummulative probability}
 \item
   \textbf{q} prefix for the \textbf{quantile}
 \item
@@ -1378,6 +1378,86 @@ The general formula for the probability density function of the normal distribut
 f_X(x) = \frac{1}{\sigma\sqrt{(2\pi)}} e^{-(x-\mu)^2/2\sigma^2}
 \]
 
+If we let the mean \(\mu=0\) and the standard deviation \(\sigma=1\), we get the probability density function for the standard normal distribution.
+
+\[
+f_X(x) = \frac{1}{\sqrt{(2\pi)}} e^{-(x)^2/2}
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{dnorm}\NormalTok{(}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.3989423
+\end{verbatim}
+
+\begin{figure}
+\centering
+\includegraphics{STA-326-2.0-R-programming-and-Data-Analysis_files/figure-latex/unnamed-chunk-40-1.pdf}
+\caption{\label{fig:unnamed-chunk-40}Standard normal probability density function: dnorm(0)}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pnorm}\NormalTok{(}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.5
+\end{verbatim}
+
+\begin{figure}
+\centering
+\includegraphics{STA-326-2.0-R-programming-and-Data-Analysis_files/figure-latex/unnamed-chunk-42-1.pdf}
+\caption{\label{fig:unnamed-chunk-42}Standard normal probability density function: dnorm(0)}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qnorm}\NormalTok{(}\FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0
+\end{verbatim}
+
+\begin{figure}
+\centering
+\includegraphics{STA-326-2.0-R-programming-and-Data-Analysis_files/figure-latex/unnamed-chunk-44-1.pdf}
+\caption{\label{fig:unnamed-chunk-44}Standard normal probability density function: dnorm(0)}
+\end{figure}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{262020}\NormalTok{)}
+\NormalTok{random_numbers <-}\StringTok{ }\KeywordTok{rnorm}\NormalTok{(}\DecValTok{10}\NormalTok{)}
+\NormalTok{random_numbers}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ [1]  0.20078181  0.95873346  1.18369056  1.49513750  1.18109222 -0.57789570
+ [7]  0.01790671  0.81185245  0.39488199 -0.44337927
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sort}\NormalTok{(random_numbers) }\CommentTok{## sort the numbers then it is easy to map with the graph}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ [1] -0.57789570 -0.44337927  0.01790671  0.20078181  0.39488199  0.81185245
+ [7]  0.95873346  1.18109222  1.18369056  1.49513750
+\end{verbatim}
+
+\includegraphics{STA-326-2.0-R-programming-and-Data-Analysis_files/figure-latex/unnamed-chunk-46-1.pdf}
+
 \hypertarget{reproducibility-of-scientific-results}{%
 \subsection{Reproducibility of scientific results}\label{reproducibility-of-scientific-results}}
 
@@ -1388,8 +1468,8 @@ f_X(x) = \frac{1}{\sigma\sqrt{(2\pi)}} e^{-(x-\mu)^2/2\sigma^2}
 \end{Shaded}
 
 \begin{verbatim}
-##  [1]  0.60064745 -0.40656969 -1.27499855  1.08826739 -0.03398461 -0.81505467
-##  [7] -1.10542367  1.72754929  0.75281886  0.50873719
+ [1]  1.4701904 -0.2375662  0.1765985 -0.5257483 -1.3674764 -1.4422500
+ [7]  0.7576607  0.6475122 -1.1543034  0.9066248
 \end{verbatim}
 
 \begin{Shaded}
@@ -1399,8 +1479,8 @@ f_X(x) = \frac{1}{\sigma\sqrt{(2\pi)}} e^{-(x-\mu)^2/2\sigma^2}
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] -0.45083911 -0.49272368  1.06436998  0.02131287  1.07597638  0.99712576
-##  [7] -0.57225171  0.08784569  0.04534238 -1.28541711
+ [1] -1.7603264 -0.3402939 -1.0335807  1.0645014 -0.3874459  0.5975271
+ [7] -2.1535707  0.6602928  1.1581404  0.6133446
 \end{verbatim}
 
 As you can see above you will get different results
@@ -1413,8 +1493,8 @@ As you can see above you will get different results
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] -0.6264538  0.1836433 -0.8356286  1.5952808  0.3295078 -0.8204684
-##  [7]  0.4874291  0.7383247  0.5757814 -0.3053884
+ [1] -0.6264538  0.1836433 -0.8356286  1.5952808  0.3295078 -0.8204684
+ [7]  0.4874291  0.7383247  0.5757814 -0.3053884
 \end{verbatim}
 
 \begin{Shaded}
@@ -1425,8 +1505,8 @@ As you can see above you will get different results
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] -0.6264538  0.1836433 -0.8356286  1.5952808  0.3295078 -0.8204684
-##  [7]  0.4874291  0.7383247  0.5757814 -0.3053884
+ [1] -0.6264538  0.1836433 -0.8356286  1.5952808  0.3295078 -0.8204684
+ [7]  0.4874291  0.7383247  0.5757814 -0.3053884
 \end{verbatim}
 
 \hypertarget{writing-functions}{%

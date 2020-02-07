@@ -24,6 +24,7 @@ Vectors can be created by using the function concatenation `c`
 
 
 **Syntax**
+
 ```r
 vector_name <- c(element1, element2, element3)
 

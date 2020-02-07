@@ -1,4 +1,4 @@
-# Functions in R programming{#function}
+# Functions in R {#function}
 
 A function is a block of organized and reusable code that is used to perform a specific task in a program. There are two types of functions in R:
 
@@ -35,7 +35,7 @@ All R functions have three main components: (Check this with Hadley's book)
 ## Some useful built-in functions in R
 
 
-## R can be used as a simple calculator.
+### R can be used as a simple calculator.
 
 |  Operator | Description  |
 |---|---|
@@ -71,7 +71,7 @@ All R functions have three main components: (Check this with Hadley's book)
 
 - **d** prefix for the **distribution** function
 
-- **p** prefix for the **probability**
+- **p** prefix for the **cummulative probability**
 
 - **q** prefix for the **quantile**
 
@@ -86,28 +86,117 @@ The general formula for the probability density function of the normal distribut
 f_X(x) = \frac{1}{\sigma\sqrt{(2\pi)}} e^{-(x-\mu)^2/2\sigma^2}
 \]
 
+If we let the mean $\mu=0$ and the standard deviation $\sigma=1$, we get the probability density function for the standard normal distribution.
+
+\[
+f_X(x) = \frac{1}{\sqrt{(2\pi)}} e^{-(x)^2/2}
+\]
+
+
+
+
+```{r, comment=NA}
+dnorm(0)
+```
+
+```{r, echo=FALSE, fig.cap="Standard normal probability density function: dnorm(0)", collapse=NA}
+library(ggplot2)
+
+x <- seq(-4, 4, length=200)
+y <- 1/sqrt(2*pi)*exp(-x^2/2)
+#plot(x, y, type="l", lwd=2, col="red")
+
+dat <- data.frame(x=x, y=y)
+ggplot(data = dat, mapping = aes(x = x, y = y)) +
+    geom_line()+labs(y = "density", title = "dnorm(0)")+
+    geom_segment(aes(x = 0, y = 0, xend = 0, yend = 0.398), size=1, color="red")+
+    geom_segment(aes(x = 0, y = 0.398, xend = -4, yend = 0.398), arrow = arrow(length = unit(0.5, "cm")), size=1, color="red")
+    
+
+```
+
+
+```{r, comment=NA}
+pnorm(0)
+```
+
+```{r, echo=FALSE, fig.cap="Standard normal probability density function: dnorm(0)", collapse=NA}
+library(ggplot2)
+
+x <- seq(-4, 4, length=200)
+y <- 1/sqrt(2*pi)*exp(-x^2/2)
+#plot(x, y, type="l", lwd=2, col="red")
+
+dat <- data.frame(x=x, y=y)
+ggplot(data = dat, mapping = aes(x = x, y = y)) +
+    geom_line()+labs(y = "density", title = "pnorm(0)")+
+    geom_area(stat = "function", fun = dnorm, fill = "red", xlim = c(-4, 0))
+    
+
+```
+
+```{r, comment=NA}
+qnorm(0.5)
+```
+
+```{r, echo=FALSE, fig.cap="Standard normal probability density function: dnorm(0)", collapse=NA}
+library(ggplot2)
+
+x <- seq(-4, 4, length=200)
+y <- 1/sqrt(2*pi)*exp(-x^2/2)
+#plot(x, y, type="l", lwd=2, col="red")
+
+dat <- data.frame(x=x, y=y)
+ggplot(data = dat, mapping = aes(x = x, y = y)) +
+    geom_line()+labs(y = "density", title = "qnorm(0)")+
+    geom_segment(aes(x = 0, y = 0.398, xend = 0, yend = 0), size=1, color="red", arrow = arrow(length = unit(0.5, "cm")),)+
+    geom_segment(aes(x = 0, y = 0.398, xend = -4, yend = 0.398), size=1, color="red")
+    
+
+```
+
+
+```{r, comment=NA}
+set.seed(262020)
+random_numbers <- rnorm(10)
+random_numbers
+sort(random_numbers) ## sort the numbers then it is easy to map with the graph
+
+```
+
+
+```{r, echo=FALSE}
+x <- seq(-4, 4, length=200)
+y <- 1/sqrt(2*pi)*exp(-x^2/2)
+dat <- data.frame(x=x, y=y)
+highlight <- data.frame(y=rep(0, 10), x=random_numbers)
+ggplot(data = dat, mapping = aes(x = x, y = y)) +
+    geom_line() + labs(y = "density", title = "rnorm(10)") + geom_point(data=highlight, aes(x=x, y=y), colour="red", size=2)
+
+```
+
 
 ### Reproducibility of scientific results
 
-```{r}
+```{r, comment=NA}
 rnorm(10) # first attempt
 
 ```
 
 
-```{r}
+```{r, comment=NA}
 rnorm(10) # second attempt
 
 ```
 
 As you can see above you will get different results 
 
-```{r}
+```{r, comment=NA}
 set.seed(1)
 rnorm(10) # First attempt with set.seed
 ```
 
-```{r}
+```{r, comment=NA}
 set.seed(1)
 rnorm(10) # Second attempt with set.seed
 ```
