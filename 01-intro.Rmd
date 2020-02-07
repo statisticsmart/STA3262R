@@ -117,7 +117,7 @@ typeof(anew)
 
 ### Explicit coercion
 
-Vectors can be explicitly coerced from one class to another using the functions `as.charactor`, `as.numeric`, `as.integer`, and `as.logical`.
+Vectors can be explicitly coerced from one class to another using the `as.*` functions, if available. For example, `as.charactor`, `as.numeric`, `as.integer`, and `as.logical`.
 
 ```{r, comment=NA}
 vec1 <- c(TRUE, FALSE, TRUE, TRUE)
