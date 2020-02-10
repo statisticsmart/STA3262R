@@ -1,46 +1,39 @@
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[
-]{book}
+\documentclass[]{book}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
   \usepackage{unicode-math}
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
-% Use upquote if available, for straight quotes in verbatim environments
+% use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{% use microtype if available
-  \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
-\usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
 \hypersetup{
-  pdftitle={STA 326 2.0 R Programming and Data Analysis},
-  pdfauthor={Thiyanga S Talagala},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
+            pdftitle={STA 326 2.0 R Programming and Data Analysis},
+            pdfauthor={Thiyanga S Talagala},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -82,14 +75,8 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
-% Correct order of tables after \paragraph or \subparagraph
-\usepackage{etoolbox}
-\makeatletter
-\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
-\makeatother
-% Allow footnotes in longtable head/foot
-\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
-\makesavenoteenv{longtable}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -99,14 +86,25 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-% Set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
 \usepackage{booktabs}
 \usepackage{amsthm}
 \makeatletter
@@ -120,7 +118,7 @@
 
 \title{STA 326 2.0 R Programming and Data Analysis}
 \author{Thiyanga S Talagala}
-\date{2020-02-07}
+\date{2020-02-08}
 
 \begin{document}
 \maketitle
@@ -157,6 +155,14 @@ The first thing you need to do to get started with R is to install it on your co
 \end{itemize}
 
 Next you can install Rstudio. Remember, you must have R already installed before installing Rstudio. If you want to watch a step-by-step watch the vedio \href{https://www.youtube.com/watch?v=bM7Sfz-LADM\&feature=youtu.be}{here}.
+
+\hypertarget{main-windows}{%
+\section{Main windows}\label{main-windows}}
+
+\hypertarget{setting-your-working-directory}{%
+\section{Setting your working directory}\label{setting-your-working-directory}}
+
+What is working directory? To find your current working directory type \texttt{getwd()} on console.
 
 \hypertarget{working-with-r-scripts-files}{%
 \section{Working with R scripts files}\label{working-with-r-scripts-files}}
@@ -318,6 +324,8 @@ Vectors can be created by using the function concatenation \texttt{c}
 \begin{verbatim}
 [1] "integer"
 \end{verbatim}
+
+Notice that with suffix L you get integer elements rather than numeric.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -536,6 +544,168 @@ Warning: NAs introduced by coercion
 
 \begin{verbatim}
 [1] NA NA NA
+\end{verbatim}
+
+\hypertarget{combining-vectors}{%
+\subsection{Combining vectors}\label{combining-vectors}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x1 <-}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{3}
+\NormalTok{x2 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{30}\NormalTok{)}
+\NormalTok{combinedx1x2 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(x1, x2)}
+\NormalTok{combinedx1x2 }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  1  2  3 10 20 30
+\end{verbatim}
+
+Let's check the classes
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{(x1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "integer"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{(x2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{(combinedx1x2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+Similarlarly, if you combine a numeric vector and a character vector the resulting vector is a charactor vector.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y1 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{y2 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"c"}\NormalTok{)}
+\KeywordTok{c}\NormalTok{(y1, y2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "1" "2" "3" "a" "b" "c"
+\end{verbatim}
+
+\hypertarget{name-elements-in-a-vector}{%
+\subsection{Name elements in a vector}\label{name-elements-in-a-vector}}
+
+You can name elements in a vector in different ways. We will learn two of them.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  When creating it
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x1 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DataTypeTok{a=}\DecValTok{1991}\NormalTok{, }\DataTypeTok{b=}\DecValTok{1992}\NormalTok{, }\DataTypeTok{c=}\DecValTok{1993}\NormalTok{)}
+\NormalTok{x1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    a    b    c 
+## 1991 1992 1993
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Modifying the names of an existing vector
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x2 <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{10}\NormalTok{)}
+\KeywordTok{names}\NormalTok{(x) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{, }\StringTok{"b"}\NormalTok{, }\StringTok{"b"}\NormalTok{)}
+\NormalTok{x2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  1  5 10
+\end{verbatim}
+
+Note that the names do not have to be unique.
+
+To remove names of a vector
+
+Method 1
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{unname}\NormalTok{(x1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1991 1992 1993
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    a    b    c 
+## 1991 1992 1993
+\end{verbatim}
+
+Method 2
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{names}\NormalTok{(x2) <-}\StringTok{ }\OtherTok{NULL}
+\NormalTok{x2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  1  5 10
+\end{verbatim}
+
+\textbf{Question}
+
+Guess the output of the following code?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{v <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\KeywordTok{names}\NormalTok{(v) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{)}
+\KeywordTok{names}\NormalTok{(v)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "a" NA  NA
 \end{verbatim}
 
 \hypertarget{simplifying-vector-creation}{%
@@ -785,7 +955,7 @@ Add two vectors of unequal length
 \NormalTok{longvec <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{100}\NormalTok{, }\DataTypeTok{length=}\DecValTok{10}\NormalTok{)}
 \NormalTok{shortvec <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{)}
 
-\NormalTok{shortvec}\OperatorTok{+}\NormalTok{longvec}
+\NormalTok{shortvec }\OperatorTok{+}\StringTok{ }\NormalTok{longvec}
 \end{Highlighting}
 \end{Shaded}
 
@@ -973,6 +1143,57 @@ y   10  100 1000
 
 \hypertarget{list}{%
 \section{List}\label{list}}
+
+\begin{itemize}
+\tightlist
+\item
+  Lists are heterogeneous
+\end{itemize}
+
+\textbf{Syntax}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{list_name <-}\StringTok{ }\KeywordTok{list}\NormalTok{(entry1, entry2, entry3, ...)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Example}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{first_list <-}\KeywordTok{list}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\KeywordTok{matrix}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{6}\NormalTok{, }\DataTypeTok{nrow=}\DecValTok{2}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{, }\OtherTok{TRUE}\NormalTok{))}
+\NormalTok{first_list}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] 1 2 3
+## 
+## [[2]]
+##      [,1] [,2] [,3]
+## [1,]    1    3    5
+## [2,]    2    4    6
+## 
+## [[3]]
+## [1]  TRUE FALSE  TRUE
+\end{verbatim}
+
+To see the structure of a list
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(first_list)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## List of 3
+##  $ : int [1:3] 1 2 3
+##  $ : int [1:2, 1:3] 1 2 3 4 5 6
+##  $ : logi [1:3] TRUE FALSE TRUE
+\end{verbatim}
 
 \hypertarget{data-frame}{%
 \section{Data frame}\label{data-frame}}
@@ -1217,6 +1438,9 @@ To select some specific rows
 
 \textbf{Note:} All objects in R have a class.
 
+\hypertarget{exercise}{%
+\section{Exercise}\label{exercise}}
+
 \hypertarget{function}{%
 \chapter{Functions in R}\label{function}}
 
@@ -1410,8 +1634,8 @@ f_X(x) = \frac{1}{\sqrt{(2\pi)}} e^{-(x)^2/2}
 
 \begin{figure}
 \centering
-\includegraphics{STA-326-2.0-R-programming-and-Data-Analysis_files/figure-latex/unnamed-chunk-40-1.pdf}
-\caption{\label{fig:unnamed-chunk-40}Standard normal probability density function: dnorm(0)}
+\includegraphics{STA-326-2.0-R-programming-and-Data-Analysis_files/figure-latex/unnamed-chunk-50-1.pdf}
+\caption{\label{fig:unnamed-chunk-50}Standard normal probability density function: dnorm(0)}
 \end{figure}
 
 \begin{Shaded}
@@ -1426,8 +1650,8 @@ f_X(x) = \frac{1}{\sqrt{(2\pi)}} e^{-(x)^2/2}
 
 \begin{figure}
 \centering
-\includegraphics{STA-326-2.0-R-programming-and-Data-Analysis_files/figure-latex/unnamed-chunk-42-1.pdf}
-\caption{\label{fig:unnamed-chunk-42}Standard normal probability density function: dnorm(0)}
+\includegraphics{STA-326-2.0-R-programming-and-Data-Analysis_files/figure-latex/unnamed-chunk-52-1.pdf}
+\caption{\label{fig:unnamed-chunk-52}Standard normal probability density function: dnorm(0)}
 \end{figure}
 
 \begin{Shaded}
@@ -1442,8 +1666,8 @@ f_X(x) = \frac{1}{\sqrt{(2\pi)}} e^{-(x)^2/2}
 
 \begin{figure}
 \centering
-\includegraphics{STA-326-2.0-R-programming-and-Data-Analysis_files/figure-latex/unnamed-chunk-44-1.pdf}
-\caption{\label{fig:unnamed-chunk-44}Standard normal probability density function: dnorm(0)}
+\includegraphics{STA-326-2.0-R-programming-and-Data-Analysis_files/figure-latex/unnamed-chunk-54-1.pdf}
+\caption{\label{fig:unnamed-chunk-54}Standard normal probability density function: dnorm(0)}
 \end{figure}
 
 \begin{Shaded}
@@ -1470,7 +1694,7 @@ f_X(x) = \frac{1}{\sqrt{(2\pi)}} e^{-(x)^2/2}
  [7]  0.95873346  1.18109222  1.18369056  1.49513750
 \end{verbatim}
 
-\includegraphics{STA-326-2.0-R-programming-and-Data-Analysis_files/figure-latex/unnamed-chunk-46-1.pdf}
+\includegraphics{STA-326-2.0-R-programming-and-Data-Analysis_files/figure-latex/unnamed-chunk-56-1.pdf}
 
 \hypertarget{reproducibility-of-scientific-results}{%
 \subsection{Reproducibility of scientific results}\label{reproducibility-of-scientific-results}}
@@ -1593,6 +1817,6 @@ Vedio: \url{https://www.youtube.com/watch?v=K-ss_ag2k9E}
 \hypertarget{simulation-based-inference}{%
 \section{Simulation-based Inference}\label{simulation-based-inference}}
 
-  \bibliography{book.bib,packages.bib}
+\bibliography{book.bib,packages.bib}
 
 \end{document}

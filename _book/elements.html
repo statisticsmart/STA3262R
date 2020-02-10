@@ -24,7 +24,7 @@
 <meta name="author" content="Thiyanga S Talagala" />
 
 
-<meta name="date" content="2020-02-07" />
+<meta name="date" content="2020-02-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -69,7 +69,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -135,17 +135,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="elements.html"><a href="elements.html#r-programming-language"><i class="fa fa-check"></i><b>1.1</b> R programming language</a></li>
 <li class="chapter" data-level="1.2" data-path="elements.html"><a href="elements.html#rstudio"><i class="fa fa-check"></i><b>1.2</b> RStudio</a></li>
 <li class="chapter" data-level="1.3" data-path="elements.html"><a href="elements.html#installation"><i class="fa fa-check"></i><b>1.3</b> Installation</a></li>
-<li class="chapter" data-level="1.4" data-path="elements.html"><a href="elements.html#working-with-r-scripts-files"><i class="fa fa-check"></i><b>1.4</b> Working with R scripts files</a></li>
-<li class="chapter" data-level="1.5" data-path="elements.html"><a href="elements.html#r-packages"><i class="fa fa-check"></i><b>1.5</b> R packages</a><ul>
-<li class="chapter" data-level="1.5.1" data-path="elements.html"><a href="elements.html#installation-1"><i class="fa fa-check"></i><b>1.5.1</b> Installation</a></li>
-<li class="chapter" data-level="1.5.2" data-path="elements.html"><a href="elements.html#load-a-package"><i class="fa fa-check"></i><b>1.5.2</b> Load a package</a></li>
+<li class="chapter" data-level="1.4" data-path="elements.html"><a href="elements.html#main-windows"><i class="fa fa-check"></i><b>1.4</b> Main windows</a></li>
+<li class="chapter" data-level="1.5" data-path="elements.html"><a href="elements.html#setting-your-working-directory"><i class="fa fa-check"></i><b>1.5</b> Setting your working directory</a></li>
+<li class="chapter" data-level="1.6" data-path="elements.html"><a href="elements.html#working-with-r-scripts-files"><i class="fa fa-check"></i><b>1.6</b> Working with R scripts files</a></li>
+<li class="chapter" data-level="1.7" data-path="elements.html"><a href="elements.html#r-packages"><i class="fa fa-check"></i><b>1.7</b> R packages</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="elements.html"><a href="elements.html#installation-1"><i class="fa fa-check"></i><b>1.7.1</b> Installation</a></li>
+<li class="chapter" data-level="1.7.2" data-path="elements.html"><a href="elements.html#load-a-package"><i class="fa fa-check"></i><b>1.7.2</b> Load a package</a></li>
 </ul></li>
-<li class="chapter" data-level="1.6" data-path="elements.html"><a href="elements.html#important-things-to-know-about-r"><i class="fa fa-check"></i><b>1.6</b> Important things to know about R</a></li>
-<li class="chapter" data-level="1.7" data-path="elements.html"><a href="elements.html#objects"><i class="fa fa-check"></i><b>1.7</b> Objects</a></li>
-<li class="chapter" data-level="1.8" data-path="elements.html"><a href="elements.html#getting-help"><i class="fa fa-check"></i><b>1.8</b> Getting help</a></li>
-<li class="chapter" data-level="1.9" data-path="elements.html"><a href="elements.html#variable-assignment"><i class="fa fa-check"></i><b>1.9</b> Variable assignment</a></li>
-<li class="chapter" data-level="1.10" data-path="elements.html"><a href="elements.html#section"><i class="fa fa-check"></i><b>1.10</b> </a></li>
-<li class="chapter" data-level="1.11" data-path="elements.html"><a href="elements.html#data-permanency-and-removing-objects"><i class="fa fa-check"></i><b>1.11</b> Data permanency and removing objects</a></li>
+<li class="chapter" data-level="1.8" data-path="elements.html"><a href="elements.html#important-things-to-know-about-r"><i class="fa fa-check"></i><b>1.8</b> Important things to know about R</a></li>
+<li class="chapter" data-level="1.9" data-path="elements.html"><a href="elements.html#objects"><i class="fa fa-check"></i><b>1.9</b> Objects</a></li>
+<li class="chapter" data-level="1.10" data-path="elements.html"><a href="elements.html#getting-help"><i class="fa fa-check"></i><b>1.10</b> Getting help</a></li>
+<li class="chapter" data-level="1.11" data-path="elements.html"><a href="elements.html#variable-assignment"><i class="fa fa-check"></i><b>1.11</b> Variable assignment</a></li>
+<li class="chapter" data-level="1.12" data-path="elements.html"><a href="elements.html#section"><i class="fa fa-check"></i><b>1.12</b> </a></li>
+<li class="chapter" data-level="1.13" data-path="elements.html"><a href="elements.html#data-permanency-and-removing-objects"><i class="fa fa-check"></i><b>1.13</b> Data permanency and removing objects</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Data structures in base R</a><ul>
 <li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#atomic-vectors"><i class="fa fa-check"></i><b>2.1</b> Atomic vectors</a><ul>
@@ -153,12 +155,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#types-and-tests-with-vectors"><i class="fa fa-check"></i><b>2.1.2</b> Types and tests with vectors</a></li>
 <li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#coercion"><i class="fa fa-check"></i><b>2.1.3</b> Coercion</a></li>
 <li class="chapter" data-level="2.1.4" data-path="intro.html"><a href="intro.html#explicit-coercion"><i class="fa fa-check"></i><b>2.1.4</b> Explicit coercion</a></li>
-<li class="chapter" data-level="2.1.5" data-path="intro.html"><a href="intro.html#simplifying-vector-creation"><i class="fa fa-check"></i><b>2.1.5</b> Simplifying vector creation</a></li>
-<li class="chapter" data-level="2.1.6" data-path="intro.html"><a href="intro.html#logical-operations"><i class="fa fa-check"></i><b>2.1.6</b> Logical operations</a></li>
-<li class="chapter" data-level="2.1.7" data-path="intro.html"><a href="intro.html#subsetting"><i class="fa fa-check"></i><b>2.1.7</b> Subsetting</a></li>
-<li class="chapter" data-level="2.1.8" data-path="intro.html"><a href="intro.html#vector-arithmetic"><i class="fa fa-check"></i><b>2.1.8</b> Vector arithmetic</a></li>
-<li class="chapter" data-level="2.1.9" data-path="intro.html"><a href="intro.html#missing-values"><i class="fa fa-check"></i><b>2.1.9</b> Missing values</a></li>
-<li class="chapter" data-level="2.1.10" data-path="intro.html"><a href="intro.html#factor"><i class="fa fa-check"></i><b>2.1.10</b> Factor</a></li>
+<li class="chapter" data-level="2.1.5" data-path="intro.html"><a href="intro.html#combining-vectors"><i class="fa fa-check"></i><b>2.1.5</b> Combining vectors</a></li>
+<li class="chapter" data-level="2.1.6" data-path="intro.html"><a href="intro.html#name-elements-in-a-vector"><i class="fa fa-check"></i><b>2.1.6</b> Name elements in a vector</a></li>
+<li class="chapter" data-level="2.1.7" data-path="intro.html"><a href="intro.html#simplifying-vector-creation"><i class="fa fa-check"></i><b>2.1.7</b> Simplifying vector creation</a></li>
+<li class="chapter" data-level="2.1.8" data-path="intro.html"><a href="intro.html#logical-operations"><i class="fa fa-check"></i><b>2.1.8</b> Logical operations</a></li>
+<li class="chapter" data-level="2.1.9" data-path="intro.html"><a href="intro.html#subsetting"><i class="fa fa-check"></i><b>2.1.9</b> Subsetting</a></li>
+<li class="chapter" data-level="2.1.10" data-path="intro.html"><a href="intro.html#vector-arithmetic"><i class="fa fa-check"></i><b>2.1.10</b> Vector arithmetic</a></li>
+<li class="chapter" data-level="2.1.11" data-path="intro.html"><a href="intro.html#missing-values"><i class="fa fa-check"></i><b>2.1.11</b> Missing values</a></li>
+<li class="chapter" data-level="2.1.12" data-path="intro.html"><a href="intro.html#factor"><i class="fa fa-check"></i><b>2.1.12</b> Factor</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#matrix"><i class="fa fa-check"></i><b>2.2</b> Matrix</a><ul>
 <li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#matrix-subscript"><i class="fa fa-check"></i><b>2.2.1</b> Matrix subscript</a></li>
@@ -172,6 +176,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5.2" data-path="intro.html"><a href="intro.html#subsetting-data-frames"><i class="fa fa-check"></i><b>2.5.2</b> Subsetting data frames</a></li>
 <li class="chapter" data-level="2.5.3" data-path="intro.html"><a href="intro.html#built-in-dataframes"><i class="fa fa-check"></i><b>2.5.3</b> Built in dataframes</a></li>
 </ul></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#exercise"><i class="fa fa-check"></i><b>2.6</b> Exercise</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="function.html"><a href="function.html"><i class="fa fa-check"></i><b>3</b> Functions in R</a><ul>
 <li class="chapter" data-level="3.1" data-path="function.html"><a href="function.html#in-built-functions"><i class="fa fa-check"></i><b>3.1</b> In-built functions</a></li>
@@ -226,7 +231,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">STA 326 2.0 R Programming and Data Analysis</h1>
 <p class="author"><em>Thiyanga S Talagala</em></p>
-<p class="date"><em>2020-02-07</em></p>
+<p class="date"><em>2020-02-08</em></p>
 </div>
 <div id="elements" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
@@ -246,17 +251,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Next you can install Rstudio. Remember, you must have R already installed before installing Rstudio. If you want to watch a step-by-step watch the vedio <a href="https://www.youtube.com/watch?v=bM7Sfz-LADM&amp;feature=youtu.be">here</a>.</p>
 </div>
+<div id="main-windows" class="section level2">
+<h2><span class="header-section-number">1.4</span> Main windows</h2>
+</div>
+<div id="setting-your-working-directory" class="section level2">
+<h2><span class="header-section-number">1.5</span> Setting your working directory</h2>
+<p>What is working directory? To find your current working directory type <code>getwd()</code> on console.</p>
+</div>
 <div id="working-with-r-scripts-files" class="section level2">
-<h2><span class="header-section-number">1.4</span> Working with R scripts files</h2>
+<h2><span class="header-section-number">1.6</span> Working with R scripts files</h2>
 <p>Rather than typing R commands into the Console. This allows for <strong>reproducibility</strong>, share scripts with someone else.</p>
 <p>To create a new R script</p>
 <p>File –&gt; New File –&gt; R Script</p>
 <p>Commenting on R scripts</p>
 </div>
 <div id="r-packages" class="section level2">
-<h2><span class="header-section-number">1.5</span> R packages</h2>
+<h2><span class="header-section-number">1.7</span> R packages</h2>
 <div id="installation-1" class="section level3">
-<h3><span class="header-section-number">1.5.1</span> Installation</h3>
+<h3><span class="header-section-number">1.7.1</span> Installation</h3>
 <p>There is a large community of R users who contribute various packages that do useful things. Before you start using an R package, you must first install it into your environment. There are two ways to install a package</p>
 <ol style="list-style-type: decimal">
 <li></li>
@@ -264,12 +276,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </div>
 <div id="load-a-package" class="section level3">
-<h3><span class="header-section-number">1.5.2</span> Load a package</h3>
+<h3><span class="header-section-number">1.7.2</span> Load a package</h3>
 <p>one time, then load package</p>
 </div>
 </div>
 <div id="important-things-to-know-about-r" class="section level2">
-<h2><span class="header-section-number">1.6</span> Important things to know about R</h2>
+<h2><span class="header-section-number">1.8</span> Important things to know about R</h2>
 <ol style="list-style-type: decimal">
 <li><p>R is case-sensitive</p></li>
 <li><p>R works with numerous data types. Some of the most basic types to get started are:</p>
@@ -282,7 +294,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </div>
 <div id="objects" class="section level2">
-<h2><span class="header-section-number">1.7</span> Objects</h2>
+<h2><span class="header-section-number">1.9</span> Objects</h2>
 <p>The entities R operates on are technically known as <strong>objects</strong>. There are two types of objects:</p>
 <ol style="list-style-type: decimal">
 <li><p>Data structures</p></li>
@@ -290,16 +302,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </div>
 <div id="getting-help" class="section level2">
-<h2><span class="header-section-number">1.8</span> Getting help</h2>
+<h2><span class="header-section-number">1.10</span> Getting help</h2>
 </div>
 <div id="variable-assignment" class="section level2">
-<h2><span class="header-section-number">1.9</span> Variable assignment</h2>
+<h2><span class="header-section-number">1.11</span> Variable assignment</h2>
 </div>
 <div id="section" class="section level2">
-<h2><span class="header-section-number">1.10</span> </h2>
+<h2><span class="header-section-number">1.12</span> </h2>
 </div>
 <div id="data-permanency-and-removing-objects" class="section level2">
-<h2><span class="header-section-number">1.11</span> Data permanency and removing objects</h2>
+<h2><span class="header-section-number">1.13</span> Data permanency and removing objects</h2>
 
 </div>
 </div>

@@ -39,6 +39,8 @@ third_vec <- c(TRUE, FALSE, TRUE, TRUE)
 fourth_vec <- c(10L, 20L, 50L, 70L)
 ```
 
+
+
 ### Types and tests with vectors
 
 1. `typepf()` returns types of their elements
@@ -48,6 +50,8 @@ fourth_vec <- c(10L, 20L, 50L, 70L)
 typeof(first_vec)
 typeof(fourth_vec)
 ```
+
+Notice that with suffix L you get integer elements rather than numeric. 
 
 2. To check if it is a 
 
@@ -136,6 +140,84 @@ Why the below output produce NAs?
 x <- c("a", "b", "c")
 as.numeric(x)
 ```
+
+### Combining vectors
+
+```{r}
+x1 <- 1:3
+x2 <- c(10, 20, 30)
+combinedx1x2 <- c(x1, x2)
+combinedx1x2 
+```
+
+Let's check the classes
+
+```{r}
+class(x1)
+class(x2)
+class(combinedx1x2)
+
+```
+
+Similarlarly, if you combine a numeric vector and a character vector the resulting vector is a charactor vector.
+
+```{r}
+y1 <- c(1, 2, 3)
+y2 <- c("a", "b", "c")
+c(y1, y2)
+
+```
+
+
+### Name elements in a vector
+
+You can name elements in a vector in different ways. We will learn two of them.
+
+1. When creating it
+
+```{r}
+x1 <- c(a=1991, b=1992, c=1993)
+x1
+```
+
+2. Modifying the names of an existing vector
+
+```{r}
+x2 <- c(1, 5, 10)
+names(x) <- c("a", "b", "b")
+x2
+```
+
+Note that the names do not have to be unique. 
+
+To remove names of a vector
+
+Method 1
+
+```{r}
+unname(x1)
+x1
+```
+
+Method 2
+
+```{r}
+names(x2) <- NULL
+x2
+```
+
+**Question**
+
+Guess the output of the following code?
+
+```{r}
+v <- c(1, 2, 3)
+names(v) <- c("a")
+names(v)
+```
+
+
+
 
 ### Simplifying vector creation
 
@@ -234,7 +316,7 @@ Add two vectors of unequal length
 longvec <- seq(10, 100, length=10)
 shortvec <- c(1, 2, 3, 4, 5)
 
-shortvec+longvec
+shortvec + longvec
 
 ```
 
@@ -245,7 +327,6 @@ Use `NA` to place a missing value in a vector.
 ```{r, comment=NA}
 z <- c(10, 101, 2, 3, NA)
 is.na(z)
-
 ```
 
 ### Factor 
@@ -336,8 +417,30 @@ rbind(x, y) #binds matrices vertically
 
 - 
 
-
 ## List
+
+- Lists are heterogeneous
+
+**Syntax**
+
+```r
+list_name <- list(entry1, entry2, entry3, ...)
+
+```
+
+**Example**
+
+```{r}
+first_list <-list(1:3, matrix(1:6, nrow=2), c(TRUE, FALSE, TRUE))
+first_list
+```
+
+To see the structure of a list
+
+```{r}
+str(first_list)
+```
+
 
 
 
@@ -431,4 +534,5 @@ mat_df[, 2]
 ### Built in dataframes
 
 **Note:**  All objects in R have a class.
+
 
