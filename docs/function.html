@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Functions in R | STA 326 2.0 R Programming and Data Analysis</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Functions in R | STA 326 2.0 R Programming and Data Analysis" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Functions in R | STA 326 2.0 R Programming and Data Analysis" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Thiyanga S Talagala" />
+
+
+<meta name="date" content="2020-02-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="writing-functions.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R Programming and Data Analysis</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="elements.html"><a href="elements.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="elements.html"><a href="elements.html#r-programming-language"><i class="fa fa-check"></i><b>1.1</b> R programming language</a></li>
+<li class="chapter" data-level="1.2" data-path="elements.html"><a href="elements.html#rstudio"><i class="fa fa-check"></i><b>1.2</b> RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="elements.html"><a href="elements.html#installation"><i class="fa fa-check"></i><b>1.3</b> Installation</a></li>
+<li class="chapter" data-level="1.4" data-path="elements.html"><a href="elements.html#main-windows"><i class="fa fa-check"></i><b>1.4</b> Main windows</a></li>
+<li class="chapter" data-level="1.5" data-path="elements.html"><a href="elements.html#setting-your-working-directory"><i class="fa fa-check"></i><b>1.5</b> Setting your working directory</a></li>
+<li class="chapter" data-level="1.6" data-path="elements.html"><a href="elements.html#working-with-r-scripts-files"><i class="fa fa-check"></i><b>1.6</b> Working with R scripts files</a></li>
+<li class="chapter" data-level="1.7" data-path="elements.html"><a href="elements.html#r-packages"><i class="fa fa-check"></i><b>1.7</b> R packages</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="elements.html"><a href="elements.html#installation-1"><i class="fa fa-check"></i><b>1.7.1</b> Installation</a></li>
+<li class="chapter" data-level="1.7.2" data-path="elements.html"><a href="elements.html#load-a-package"><i class="fa fa-check"></i><b>1.7.2</b> Load a package</a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="elements.html"><a href="elements.html#important-things-to-know-about-r"><i class="fa fa-check"></i><b>1.8</b> Important things to know about R</a></li>
+<li class="chapter" data-level="1.9" data-path="elements.html"><a href="elements.html#objects"><i class="fa fa-check"></i><b>1.9</b> Objects</a></li>
+<li class="chapter" data-level="1.10" data-path="elements.html"><a href="elements.html#getting-help"><i class="fa fa-check"></i><b>1.10</b> Getting help</a></li>
+<li class="chapter" data-level="1.11" data-path="elements.html"><a href="elements.html#variable-assignment"><i class="fa fa-check"></i><b>1.11</b> Variable assignment</a></li>
+<li class="chapter" data-level="1.12" data-path="elements.html"><a href="elements.html#section"><i class="fa fa-check"></i><b>1.12</b> </a></li>
+<li class="chapter" data-level="1.13" data-path="elements.html"><a href="elements.html#data-permanency-and-removing-objects"><i class="fa fa-check"></i><b>1.13</b> Data permanency and removing objects</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Data structures in base R</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#atomic-vectors"><i class="fa fa-check"></i><b>2.1</b> Atomic vectors</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="intro.html"><a href="intro.html#creating-vectors"><i class="fa fa-check"></i><b>2.1.1</b> Creating vectors</a></li>
+<li class="chapter" data-level="2.1.2" data-path="intro.html"><a href="intro.html#types-and-tests-with-vectors"><i class="fa fa-check"></i><b>2.1.2</b> Types and tests with vectors</a></li>
+<li class="chapter" data-level="2.1.3" data-path="intro.html"><a href="intro.html#coercion"><i class="fa fa-check"></i><b>2.1.3</b> Coercion</a></li>
+<li class="chapter" data-level="2.1.4" data-path="intro.html"><a href="intro.html#explicit-coercion"><i class="fa fa-check"></i><b>2.1.4</b> Explicit coercion</a></li>
+<li class="chapter" data-level="2.1.5" data-path="intro.html"><a href="intro.html#combining-vectors"><i class="fa fa-check"></i><b>2.1.5</b> Combining vectors</a></li>
+<li class="chapter" data-level="2.1.6" data-path="intro.html"><a href="intro.html#name-elements-in-a-vector"><i class="fa fa-check"></i><b>2.1.6</b> Name elements in a vector</a></li>
+<li class="chapter" data-level="2.1.7" data-path="intro.html"><a href="intro.html#simplifying-vector-creation"><i class="fa fa-check"></i><b>2.1.7</b> Simplifying vector creation</a></li>
+<li class="chapter" data-level="2.1.8" data-path="intro.html"><a href="intro.html#logical-operations"><i class="fa fa-check"></i><b>2.1.8</b> Logical operations</a></li>
+<li class="chapter" data-level="2.1.9" data-path="intro.html"><a href="intro.html#subsetting"><i class="fa fa-check"></i><b>2.1.9</b> Subsetting</a></li>
+<li class="chapter" data-level="2.1.10" data-path="intro.html"><a href="intro.html#vector-arithmetic"><i class="fa fa-check"></i><b>2.1.10</b> Vector arithmetic</a></li>
+<li class="chapter" data-level="2.1.11" data-path="intro.html"><a href="intro.html#missing-values"><i class="fa fa-check"></i><b>2.1.11</b> Missing values</a></li>
+<li class="chapter" data-level="2.1.12" data-path="intro.html"><a href="intro.html#factor"><i class="fa fa-check"></i><b>2.1.12</b> Factor</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#matrix"><i class="fa fa-check"></i><b>2.2</b> Matrix</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="intro.html"><a href="intro.html#matrix-subscript"><i class="fa fa-check"></i><b>2.2.1</b> Matrix subscript</a></li>
+<li class="chapter" data-level="2.2.2" data-path="intro.html"><a href="intro.html#cbind-and-rbind"><i class="fa fa-check"></i><b>2.2.2</b> <code>cbind</code> and <code>rbind</code></a></li>
+<li class="chapter" data-level="2.2.3" data-path="intro.html"><a href="intro.html#matrix-operations"><i class="fa fa-check"></i><b>2.2.3</b> Matrix operations</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#array"><i class="fa fa-check"></i><b>2.3</b> Array</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#list"><i class="fa fa-check"></i><b>2.4</b> List</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#data-frame"><i class="fa fa-check"></i><b>2.5</b> Data frame</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="intro.html"><a href="intro.html#creating-a-dataframe"><i class="fa fa-check"></i><b>2.5.1</b> Creating a dataframe</a></li>
+<li class="chapter" data-level="2.5.2" data-path="intro.html"><a href="intro.html#subsetting-data-frames"><i class="fa fa-check"></i><b>2.5.2</b> Subsetting data frames</a></li>
+<li class="chapter" data-level="2.5.3" data-path="intro.html"><a href="intro.html#built-in-dataframes"><i class="fa fa-check"></i><b>2.5.3</b> Built in dataframes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="function.html"><a href="function.html"><i class="fa fa-check"></i><b>3</b> Functions in R</a><ul>
+<li class="chapter" data-level="3.1" data-path="function.html"><a href="function.html#in-built-functions"><i class="fa fa-check"></i><b>3.1</b> In-built functions</a></li>
+<li class="chapter" data-level="3.2" data-path="function.html"><a href="function.html#user-defined-functions"><i class="fa fa-check"></i><b>3.2</b> User-defined functions</a></li>
+<li class="chapter" data-level="3.3" data-path="function.html"><a href="function.html#main-components-of-a-function"><i class="fa fa-check"></i><b>3.3</b> Main components of a function</a></li>
+<li class="chapter" data-level="3.4" data-path="function.html"><a href="function.html#passing-arguments-to-a-function"><i class="fa fa-check"></i><b>3.4</b> Passing arguments to a function</a></li>
+<li class="chapter" data-level="3.5" data-path="function.html"><a href="function.html#some-useful-built-in-functions-in-r"><i class="fa fa-check"></i><b>3.5</b> Some useful built-in functions in R</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="function.html"><a href="function.html#r-can-be-used-as-a-simple-calculator."><i class="fa fa-check"></i><b>3.5.1</b> R can be used as a simple calculator.</a></li>
+<li class="chapter" data-level="3.5.2" data-path="function.html"><a href="function.html#some-more-maths-functions"><i class="fa fa-check"></i><b>3.5.2</b> Some more maths functions</a></li>
+<li class="chapter" data-level="3.5.3" data-path="function.html"><a href="function.html#basic-statistic-functions"><i class="fa fa-check"></i><b>3.5.3</b> Basic statistic functions</a></li>
+<li class="chapter" data-level="3.5.4" data-path="function.html"><a href="function.html#probability-distribution-functions"><i class="fa fa-check"></i><b>3.5.4</b> Probability distribution functions</a></li>
+<li class="chapter" data-level="3.5.5" data-path="function.html"><a href="function.html#reproducibility-of-scientific-results"><i class="fa fa-check"></i><b>3.5.5</b> Reproducibility of scientific results</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="writing-functions.html"><a href="writing-functions.html"><i class="fa fa-check"></i><b>4</b> Writing functions</a><ul>
+<li class="chapter" data-level="4.1" data-path="writing-functions.html"><a href="writing-functions.html#when-should-we-write-functions"><i class="fa fa-check"></i><b>4.1</b> When should we write functions?</a></li>
+<li class="chapter" data-level="4.2" data-path="writing-functions.html"><a href="writing-functions.html#glogal-variables-vs-local-variables"><i class="fa fa-check"></i><b>4.2</b> Glogal variables vs local variables</a></li>
+<li class="chapter" data-level="4.3" data-path="writing-functions.html"><a href="writing-functions.html#control-structures"><i class="fa fa-check"></i><b>4.3</b> Control structures</a></li>
+<li class="chapter" data-level="4.4" data-path="writing-functions.html"><a href="writing-functions.html#lapply-apply.."><i class="fa fa-check"></i><b>4.4</b> lapply, apply..</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-analysis-with-tidyverse.html"><a href="data-analysis-with-tidyverse.html"><i class="fa fa-check"></i><b>5</b> Data analysis with tidyverse</a><ul>
+<li class="chapter" data-level="5.1" data-path="data-analysis-with-tidyverse.html"><a href="data-analysis-with-tidyverse.html#tidy-data"><i class="fa fa-check"></i><b>5.1</b> Tidy data</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="data-analysis-with-tidyverse.html"><a href="data-analysis-with-tidyverse.html#convert-from-messy-data-to-tidy-data"><i class="fa fa-check"></i><b>5.1.1</b> Convert from messy data to tidy data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="data-wrangliing.html"><a href="data-wrangliing.html"><i class="fa fa-check"></i><b>6</b> Data wrangliing</a></li>
+<li class="chapter" data-level="7" data-path="data-visualisation.html"><a href="data-visualisation.html"><i class="fa fa-check"></i><b>7</b> Data visualisation</a></li>
+<li class="chapter" data-level="8" data-path="modelling.html"><a href="modelling.html"><i class="fa fa-check"></i><b>8</b> Modelling</a><ul>
+<li class="chapter" data-level="8.1" data-path="modelling.html"><a href="modelling.html#simulation-based-inference"><i class="fa fa-check"></i><b>8.1</b> Simulation-based Inference</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">STA 326 2.0 R Programming and Data Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="function" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Functions in R</h1>
+<p>A function is a block of organized and reusable code that is used to perform a specific task in a program. There are two types of functions in R:</p>
+<ol style="list-style-type: decimal">
+<li><p>In-built functions</p></li>
+<li><p>User-defined functions</p></li>
+</ol>
+<div id="in-built-functions" class="section level2">
+<h2><span class="header-section-number">3.1</span> In-built functions</h2>
+<p>These functions in R programming are provided by R environment for direct execution, to make our work easier Some examples for the frequently used in-built functions are as follows.</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1"><span class="kw">mean</span>(<span class="kw">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">78</span>, <span class="dv">105</span>))</a></code></pre></div>
+<pre><code>[1] 46.8</code></pre>
+</div>
+<div id="user-defined-functions" class="section level2">
+<h2><span class="header-section-number">3.2</span> User-defined functions</h2>
+<p>These functions in R programming language are dclared and defined by a user according to the requirements, to perform a specific task.</p>
+</div>
+<div id="main-components-of-a-function" class="section level2">
+<h2><span class="header-section-number">3.3</span> Main components of a function</h2>
+<p>All R functions have three main components: (Check this with Hadley’s book)</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>function name</strong>: name of the function that is stored as an R object</p></li>
+<li><p><strong>arguments:</strong> are used to rovide specific inputs to a function while a function is invoked. A function can have zero, single, multiple or default arguments.</p></li>
+<li><p><strong>function body:</strong> contains the block of code that performs the specific task assigned to a function. <strong>return value</strong></p></li>
+</ol>
+</div>
+<div id="passing-arguments-to-a-function" class="section level2">
+<h2><span class="header-section-number">3.4</span> Passing arguments to a function</h2>
+</div>
+<div id="some-useful-built-in-functions-in-r" class="section level2">
+<h2><span class="header-section-number">3.5</span> Some useful built-in functions in R</h2>
+<div id="r-can-be-used-as-a-simple-calculator." class="section level3">
+<h3><span class="header-section-number">3.5.1</span> R can be used as a simple calculator.</h3>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>+</td>
+<td>addition</td>
+</tr>
+<tr class="even">
+<td>-</td>
+<td>substraction</td>
+</tr>
+<tr class="odd">
+<td>*</td>
+<td>multiplication</td>
+</tr>
+<tr class="even">
+<td>^</td>
+<td>exponentiation (5^2 is 25)</td>
+</tr>
+<tr class="odd">
+<td>%%</td>
+<td>modulo-remainder of the division of the number to the left by the number on its right. (5%%3 is 2)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="some-more-maths-functions" class="section level3">
+<h3><span class="header-section-number">3.5.2</span> Some more maths functions</h3>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>abs(x)</td>
+<td>absolute value of x</td>
+</tr>
+<tr class="even">
+<td>log(x, base=y)</td>
+<td>logarithm of x with base y; if base is not specified, returns the natural logarithm</td>
+</tr>
+<tr class="odd">
+<td>exp(x)</td>
+<td>exponential of x</td>
+</tr>
+<tr class="even">
+<td>sqrt(x)</td>
+<td>square root of x</td>
+</tr>
+<tr class="odd">
+<td>factorial(x)</td>
+<td>factorial of x</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="basic-statistic-functions" class="section level3">
+<h3><span class="header-section-number">3.5.3</span> Basic statistic functions</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>mean(x)</td>
+<td>mean of x</td>
+</tr>
+<tr class="even">
+<td>median(x)</td>
+<td>median of x</td>
+</tr>
+<tr class="odd">
+<td>mode(x)</td>
+<td>mode of x</td>
+</tr>
+<tr class="even">
+<td>var(x)</td>
+<td>variance of x</td>
+</tr>
+<tr class="odd">
+<td>scale(x)</td>
+<td>z-score of x</td>
+</tr>
+<tr class="even">
+<td>quantile(x)</td>
+<td>quantiles of x</td>
+</tr>
+<tr class="odd">
+<td>summary(x)</td>
+<td>summary of x: mean, minimum, maximum, etc.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="probability-distribution-functions" class="section level3">
+<h3><span class="header-section-number">3.5.4</span> Probability distribution functions</h3>
+<ul>
+<li><p><strong>d</strong> prefix for the <strong>distribution</strong> function</p></li>
+<li><p><strong>p</strong> prefix for the <strong>cummulative probability</strong></p></li>
+<li><p><strong>q</strong> prefix for the <strong>quantile</strong></p></li>
+<li><p><strong>r</strong> prefix for the <strong>random</strong> number generator</p></li>
+</ul>
+<div id="illustration-with-standard-normal-distribution" class="section level4">
+<h4><span class="header-section-number">3.5.4.1</span> Illustration with Standard normal distribution</h4>
+<p>The general formula for the probability density function of the normal distribution with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma\)</span> is given by</p>
+<p><span class="math display">\[
+f_X(x) = \frac{1}{\sigma\sqrt{(2\pi)}} e^{-(x-\mu)^2/2\sigma^2}
+\]</span></p>
+<p>If we let the mean <span class="math inline">\(\mu=0\)</span> and the standard deviation <span class="math inline">\(\sigma=1\)</span>, we get the probability density function for the standard normal distribution.</p>
+<p><span class="math display">\[
+f_X(x) = \frac{1}{\sqrt{(2\pi)}} e^{-(x)^2/2}
+\]</span></p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1"><span class="kw">dnorm</span>(<span class="dv">0</span>)</a></code></pre></div>
+<pre><code>[1] 0.3989423</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-50"></span>
+<img src="STA-326-2.0-R-programming-and-Data-Analysis_files/figure-html/unnamed-chunk-50-1.png" alt="Standard normal probability density function: dnorm(0)" width="672" />
+<p class="caption">
+Figure 3.1: Standard normal probability density function: dnorm(0)
+</p>
+</div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1"><span class="kw">pnorm</span>(<span class="dv">0</span>)</a></code></pre></div>
+<pre><code>[1] 0.5</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-52"></span>
+<img src="STA-326-2.0-R-programming-and-Data-Analysis_files/figure-html/unnamed-chunk-52-1.png" alt="Standard normal probability density function: dnorm(0)" width="672" />
+<p class="caption">
+Figure 3.2: Standard normal probability density function: dnorm(0)
+</p>
+</div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1"><span class="kw">qnorm</span>(<span class="fl">0.5</span>)</a></code></pre></div>
+<pre><code>[1] 0</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-54"></span>
+<img src="STA-326-2.0-R-programming-and-Data-Analysis_files/figure-html/unnamed-chunk-54-1.png" alt="Standard normal probability density function: dnorm(0)" width="672" />
+<p class="caption">
+Figure 3.3: Standard normal probability density function: dnorm(0)
+</p>
+</div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">262020</span>)</a>
+<a class="sourceLine" id="cb154-2" data-line-number="2">random_numbers &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb154-3" data-line-number="3">random_numbers</a></code></pre></div>
+<pre><code> [1]  0.20078181  0.95873346  1.18369056  1.49513750  1.18109222 -0.57789570
+ [7]  0.01790671  0.81185245  0.39488199 -0.44337927</code></pre>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" data-line-number="1"><span class="kw">sort</span>(random_numbers) <span class="co">## sort the numbers then it is easy to map with the graph</span></a></code></pre></div>
+<pre><code> [1] -0.57789570 -0.44337927  0.01790671  0.20078181  0.39488199  0.81185245
+ [7]  0.95873346  1.18109222  1.18369056  1.49513750</code></pre>
+<p><img src="STA-326-2.0-R-programming-and-Data-Analysis_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+</div>
+</div>
+<div id="reproducibility-of-scientific-results" class="section level3">
+<h3><span class="header-section-number">3.5.5</span> Reproducibility of scientific results</h3>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" data-line-number="1"><span class="kw">rnorm</span>(<span class="dv">10</span>) <span class="co"># first attempt</span></a></code></pre></div>
+<pre><code> [1]  1.4701904 -0.2375662  0.1765985 -0.5257483 -1.3674764 -1.4422500
+ [7]  0.7576607  0.6475122 -1.1543034  0.9066248</code></pre>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1"><span class="kw">rnorm</span>(<span class="dv">10</span>) <span class="co"># second attempt</span></a></code></pre></div>
+<pre><code> [1] -1.7603264 -0.3402939 -1.0335807  1.0645014 -0.3874459  0.5975271
+ [7] -2.1535707  0.6602928  1.1581404  0.6133446</code></pre>
+<p>As you can see above you will get different results</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb162-2" data-line-number="2"><span class="kw">rnorm</span>(<span class="dv">10</span>) <span class="co"># First attempt with set.seed</span></a></code></pre></div>
+<pre><code> [1] -0.6264538  0.1836433 -0.8356286  1.5952808  0.3295078 -0.8204684
+ [7]  0.4874291  0.7383247  0.5757814 -0.3053884</code></pre>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb164-2" data-line-number="2"><span class="kw">rnorm</span>(<span class="dv">10</span>) <span class="co"># Second attempt with set.seed</span></a></code></pre></div>
+<pre><code> [1] -0.6264538  0.1836433 -0.8356286  1.5952808  0.3295078 -0.8204684
+ [7]  0.4874291  0.7383247  0.5757814 -0.3053884</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="writing-functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-literature.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["STA 326 2.0 R programming and Data Analysis.pdf", "STA 326 2.0 R programming and Data Analysis.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
